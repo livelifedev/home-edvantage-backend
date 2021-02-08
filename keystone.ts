@@ -5,6 +5,7 @@ import {
   statelessSessions,
 } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
+import { Course } from './schemas/Course';
 import 'dotenv/config';
 
 const databaseURL =
@@ -34,7 +35,7 @@ export default withAuth(
       adapter: 'mongoose',
       url: databaseURL,
     },
-    lists: createSchema({ User }),
+    lists: createSchema({ User, Course }),
     ui: {
       isAccessAllowed: ({ session }) => {
         console.log(session);
