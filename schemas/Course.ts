@@ -5,6 +5,7 @@ export const Course = list({
   fields: {
     name: text({ isRequired: true }),
     description: text({
+      isRequired: true,
       ui: {
         displayMode: 'textarea',
       },

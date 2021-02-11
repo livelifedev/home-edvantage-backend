@@ -8,6 +8,7 @@ import {
 import { User } from './schemas/User';
 import { Course } from './schemas/Course';
 import { CourseImage } from './schemas/CourseImage';
+import { insertSeedData } from './seed-data';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/home-edvantage';
@@ -35,6 +36,12 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: databaseURL,
+      async onConnect(keystone) {
+        console.log('connected to db');
+        if (process.argv.includes('--seed-data')) {
+          await insertSeedData(keystone);
+        }
+      },
     },
     lists: createSchema({ User, Course, CourseImage }),
     ui: {
