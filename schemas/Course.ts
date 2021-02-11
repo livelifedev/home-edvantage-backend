@@ -9,6 +9,15 @@ export const Course = list({
         displayMode: 'textarea',
       },
     }),
+    photo: relationship({
+      ref: 'CourseImage.course',
+      ui: {
+        displayMode: 'cards',
+        cardFields: ['image', 'altText'],
+        inlineCreate: { fields: ['image', 'altText'] },
+        inlineEdit: { fields: ['image', 'altText'] },
+      },
+    }),
     status: select({
       options: [
         { label: 'Draft', value: 'DRAFT' },

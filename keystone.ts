@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { createAuth } from '@keystone-next/auth';
 import { config, createSchema } from '@keystone-next/keystone/schema';
 import {
@@ -6,7 +7,7 @@ import {
 } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
 import { Course } from './schemas/Course';
-import 'dotenv/config';
+import { CourseImage } from './schemas/CourseImage';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/home-edvantage';
@@ -35,7 +36,7 @@ export default withAuth(
       adapter: 'mongoose',
       url: databaseURL,
     },
-    lists: createSchema({ User, Course }),
+    lists: createSchema({ User, Course, CourseImage }),
     ui: {
       isAccessAllowed: ({ session }) => {
         console.log(session);
