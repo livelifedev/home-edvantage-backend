@@ -6,8 +6,11 @@ import {
   statelessSessions,
 } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
+import { Topic } from './schemas/Topic';
+import { TopicImage } from './schemas/TopicImage';
 import { Course } from './schemas/Course';
 import { CourseImage } from './schemas/CourseImage';
+import { Tag } from './schemas/Tag';
 import { insertSeedData } from './seed-data';
 
 const databaseURL =
@@ -43,7 +46,7 @@ export default withAuth(
         }
       },
     },
-    lists: createSchema({ User, Course, CourseImage }),
+    lists: createSchema({ User, Topic, TopicImage, Course, CourseImage, Tag }),
     ui: {
       isAccessAllowed: ({ session }) => {
         console.log(session);

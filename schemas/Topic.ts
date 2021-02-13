@@ -1,13 +1,9 @@
 import { list } from '@keystone-next/keystone/schema';
 import { text, relationship, select } from '@keystone-next/fields';
 
-export const Course = list({
+export const Topic = list({
   fields: {
     name: text({ isRequired: true }),
-    topic: relationship({
-      ref: 'Topic.courses',
-      many: false,
-    }),
     description: text({
       isRequired: true,
       ui: {
@@ -15,17 +11,13 @@ export const Course = list({
       },
     }),
     photo: relationship({
-      ref: 'CourseImage.course',
+      ref: 'TopicImage.topic',
       ui: {
         displayMode: 'cards',
         cardFields: ['image', 'altText'],
         inlineCreate: { fields: ['image', 'altText'] },
         inlineEdit: { fields: ['image', 'altText'] },
       },
-    }),
-    tags: relationship({
-      ref: 'Tag.courses',
-      many: true,
     }),
     status: select({
       options: [
@@ -38,6 +30,10 @@ export const Course = list({
         displayMode: 'segmented-control',
         createView: { fieldMode: 'hidden' },
       },
+    }),
+    courses: relationship({
+      ref: 'Course.topic',
+      many: true,
     }),
   },
 });
