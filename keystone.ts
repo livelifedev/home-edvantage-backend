@@ -14,7 +14,8 @@ import { config, createSchema, list } from '@keystone-next/keystone/schema';
 // import { insertSeedData } from './seed-data';
 import { text, relationship } from '@keystone-next/fields';
 
-const databaseURL = 'mongodb://localhost/home-edvantage';
+const databaseURL =
+  process.env.DATABASE_URL || 'mongodb://localhost/home-edvantage';
 
 // const sessionConfig = {
 //   maxAge: 60 * 60 * 24 * 360,
