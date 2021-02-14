@@ -1,17 +1,18 @@
 import 'dotenv/config';
 // import { createAuth } from '@keystone-next/auth';
-import { config, createSchema } from '@keystone-next/keystone/schema';
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
 // import {
 //   withItemData,
 //   statelessSessions,
 // } from '@keystone-next/keystone/session';
-import { User } from './schemas/User';
+// import { User } from './schemas/User';
 // import { Topic } from './schemas/Topic';
 // import { TopicImage } from './schemas/TopicImage';
 // import { Course } from './schemas/Course';
 // import { CourseImage } from './schemas/CourseImage';
 // import { Tag } from './schemas/Tag';
 // import { insertSeedData } from './seed-data';
+import { text, relationship } from '@keystone-next/fields';
 
 const databaseURL = 'mongodb://localhost/home-edvantage';
 
@@ -64,5 +65,11 @@ export default config({
   ui: {
     isAccessAllowed: (ctx) => true,
   },
-  lists: createSchema({ User }),
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        name: text({ isRequired: true }),
+      },
+    }),
+  }),
 });
