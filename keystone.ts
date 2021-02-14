@@ -30,21 +30,21 @@ const databaseURL =
 
 // export default withAuth(
 export default config({
-  server: {
-    cors: {
-      origin: [process.env.FRONTEND_URL],
-      credentials: true,
-    },
-  },
+  // server: {
+  //   cors: {
+  //     origin: [process.env.FRONTEND_URL],
+  //     credentials: true,
+  //   },
+  // },
   db: {
     adapter: 'mongoose',
     url: databaseURL,
-    async onConnect(keystone) {
-      console.log('connected to db');
-      if (process.argv.includes('--seed-data')) {
-        await insertSeedData(keystone);
-      }
-    },
+    // async onConnect(keystone) {
+    //   console.log('connected to db');
+    //   if (process.argv.includes('--seed-data')) {
+    //     await insertSeedData(keystone);
+    //   }
+    // },
   },
   lists: createSchema({ User, Topic, TopicImage, Course, CourseImage, Tag }),
   ui: {
