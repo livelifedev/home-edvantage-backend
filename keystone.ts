@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { createAuth } from '@keystone-next/auth';
+// import { createAuth } from '@keystone-next/auth';
 import { config, createSchema } from '@keystone-next/keystone/schema';
 // import {
 //   withItemData,
@@ -21,39 +21,39 @@ const databaseURL =
 //   secret: process.env.COOKIE_SECRET,
 // };
 
-const { withAuth } = createAuth({
-  listKey: 'User',
-  identityField: 'email',
-  secretField: 'password',
-  initFirstItem: { fields: ['name', 'email', 'password'] },
-});
+// const { withAuth } = createAuth({
+//   listKey: 'User',
+//   identityField: 'email',
+//   secretField: 'password',
+//   initFirstItem: { fields: ['name', 'email', 'password'] },
+// });
 
-export default withAuth(
-  config({
-    server: {
-      cors: {
-        origin: [process.env.FRONTEND_URL],
-        credentials: true,
-      },
+// export default withAuth(
+export default config({
+  server: {
+    cors: {
+      origin: [process.env.FRONTEND_URL],
+      credentials: true,
     },
-    db: {
-      adapter: 'mongoose',
-      url: databaseURL,
-      async onConnect(keystone) {
-        console.log('connected to db');
-        if (process.argv.includes('--seed-data')) {
-          await insertSeedData(keystone);
-        }
-      },
+  },
+  db: {
+    adapter: 'mongoose',
+    url: databaseURL,
+    async onConnect(keystone) {
+      console.log('connected to db');
+      if (process.argv.includes('--seed-data')) {
+        await insertSeedData(keystone);
+      }
     },
-    lists: createSchema({ User, Topic, TopicImage, Course, CourseImage, Tag }),
-    ui: {
-      isAccessAllowed: ({ session }) => {
-        console.log('!!!!!!!!SESSION', session);
-        return true;
-        // return !!session?.data;
-      },
+  },
+  lists: createSchema({ User, Topic, TopicImage, Course, CourseImage, Tag }),
+  ui: {
+    isAccessAllowed: ({ session }) => {
+      console.log('!!!!!!!!SESSION', session);
+      return true;
+      // return !!session?.data;
     },
-    // session: withItemData(statelessSessions(sessionConfig), { User: 'id' }),
-  })
-);
+  },
+  // session: withItemData(statelessSessions(sessionConfig), { User: 'id' }),
+});
+// );
