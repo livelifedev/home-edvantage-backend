@@ -7,27 +7,27 @@ import { KeystoneGraphQLAPI, KeystoneListsAPI } from '@keystone-next/types';
 // import type { Permission } from './schemas/fields';
 // export type { Permission } from './schemas/fields';
 
-export type Session = {
-  itemId: string;
-  listKey: string;
-  data: {
-    name: string;
-  };
-};
+// export type Session = {
+//   itemId: string;
+//   listKey: string;
+//   data: {
+//     name: string;
+//   };
+// };
 
 export type ListsAPI = KeystoneListsAPI<any /* KeystoneListsTypeInfo */>;
 export type GraphqlAPI = KeystoneGraphQLAPI<any /* KeystoneListsTypeInfo */>;
 
-export type AccessArgs = {
-  session?: Session;
-  item?: any;
-};
+// export type AccessArgs = {
+//   session?: Session;
+//   item?: any;
+// };
 
-export type AccessControl = {
-  [key: string]: (args: AccessArgs) => any;
-};
+// export type AccessControl = {
+//   [key: string]: (args: AccessArgs) => any;
+// };
 
-export type ListAccessArgs = {
-  itemId?: string;
-  session?: Session;
-};
+// export type ListAccessArgs = {
+//   itemId?: string;
+//   session?: Session;
+// };

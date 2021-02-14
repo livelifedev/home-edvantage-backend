@@ -65,5 +65,5 @@ export default config({
   ui: {
     isAccessAllowed: (ctx) => true,
   },
-  lists: createSchema({ User, Topic, TopicImage, Course, CourseImage, Tag }),
+  lists: createSchema({ User }),
 });
