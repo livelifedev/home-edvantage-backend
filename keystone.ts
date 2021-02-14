@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import { createAuth } from '@keystone-next/auth';
 import { config, createSchema } from '@keystone-next/keystone/schema';
-import {
-  withItemData,
-  statelessSessions,
-} from '@keystone-next/keystone/session';
+// import {
+//   withItemData,
+//   statelessSessions,
+// } from '@keystone-next/keystone/session';
 import { User } from './schemas/User';
 import { Topic } from './schemas/Topic';
 import { TopicImage } from './schemas/TopicImage';
@@ -16,10 +16,10 @@ import { insertSeedData } from './seed-data';
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/home-edvantage';
 
-const sessionConfig = {
-  maxAge: 60 * 60 * 24 * 360,
-  secret: process.env.COOKIE_SECRET,
-};
+// const sessionConfig = {
+//   maxAge: 60 * 60 * 24 * 360,
+//   secret: process.env.COOKIE_SECRET,
+// };
 
 const { withAuth } = createAuth({
   listKey: 'User',
@@ -49,10 +49,11 @@ export default withAuth(
     lists: createSchema({ User, Topic, TopicImage, Course, CourseImage, Tag }),
     ui: {
       isAccessAllowed: ({ session }) => {
-        console.log(session);
-        return !!session?.data;
+        console.log('!!!!!!!!SESSION', session);
+        return true;
+        // return !!session?.data;
       },
     },
-    session: withItemData(statelessSessions(sessionConfig), { User: 'id' }),
+    // session: withItemData(statelessSessions(sessionConfig), { User: 'id' }),
   })
 );
