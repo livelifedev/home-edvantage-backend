@@ -13,8 +13,7 @@ import { User } from './schemas/User';
 // import { Tag } from './schemas/Tag';
 // import { insertSeedData } from './seed-data';
 
-const databaseURL =
-  process.env.DATABASE_URL || 'mongodb://localhost/home-edvantage';
+const databaseURL = 'mongodb://localhost/home-edvantage';
 
 // const sessionConfig = {
 //   maxAge: 60 * 60 * 24 * 360,
