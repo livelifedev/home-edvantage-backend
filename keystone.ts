@@ -30,12 +30,12 @@ const databaseURL =
 
 // export default withAuth(
 export default config({
-  // server: {
-  //   cors: {
-  //     origin: [process.env.FRONTEND_URL],
-  //     credentials: true,
-  //   },
-  // },
+  server: {
+    cors: {
+      origin: [process.env.FRONTEND_URL],
+      credentials: true,
+    },
+  },
   db: {
     adapter: 'mongoose',
     url: databaseURL,
@@ -48,11 +48,8 @@ export default config({
   },
   lists: createSchema({ User, Topic, TopicImage, Course, CourseImage, Tag }),
   ui: {
-    isAccessAllowed: ({ session }) => {
-      console.log('!!!!!!!!SESSION', session);
-      return true;
-      // return !!session?.data;
-    },
+    isAccessAllowed: (context) => true,
+    enableSessionItem: false,
   },
   // session: withItemData(statelessSessions(sessionConfig), { User: 'id' }),
 });
