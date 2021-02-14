@@ -24,16 +24,16 @@ export type Session = {
 export type ListsAPI = KeystoneListsAPI<any /* KeystoneListsTypeInfo */>;
 export type GraphqlAPI = KeystoneGraphQLAPI<any /* KeystoneListsTypeInfo */>;
 
-// export type AccessArgs = {
-//   session?: Session;
-//   item?: any;
-// };
+export type AccessArgs = {
+  session?: Session;
+  item?: any;
+};
 
-// export type AccessControl = {
-//   [key: string]: (args: AccessArgs) => any;
-// };
+export type AccessControl = {
+  [key: string]: (args: AccessArgs) => any;
+};
 
-// export type ListAccessArgs = {
-//   itemId?: string;
-//   session?: Session;
-// };
+export type ListAccessArgs = {
+  itemId?: string;
+  session?: Session;
+};
