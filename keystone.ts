@@ -11,7 +11,7 @@ import { TopicImage } from './schemas/TopicImage';
 import { Course } from './schemas/Course';
 import { CourseImage } from './schemas/CourseImage';
 import { Tag } from './schemas/Tag';
-import { insertSeedData } from './seed-data';
+// import { insertSeedData } from './seed-data';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/home-edvantage';

@@ -5,10 +5,8 @@
   "author": "John Rubio",
   "license": "MIT",
   "scripts": {
-    "start": "keystone-next start",
-    "build": "keystone-next build",
-    "dev": "keystone-next",
-    "seed-data": "keystone-next --seed-data"
+    "start": "keystone-next build;keystone-next start",
+    "dev": "keystone-next"
   },
   "eslintConfig": {
     "extends": "wesbos/typescript.js",
